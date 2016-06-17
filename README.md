@@ -1,4 +1,4 @@
-# FP TypeScript Todo MVC Application built with Angular JS
+# TypeScript Todo Application built with Angular JS
 
 The following source code has been built to be used for an comparative analysis of Elm, TypeScript and CoffeeScript in order to find alternatives to JavaScript for web development. JavaScript, although not by definition, is quickly becoming a flexible assembly language for the World Wide Web. 
 
