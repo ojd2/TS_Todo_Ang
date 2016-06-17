@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "noImplicitReturns": true
+    },
+    "exclude": [
+        "typings/main.d.ts",
+        "typings/main",
+        "node_modules"
+    ]
+}
