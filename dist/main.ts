@@ -91,7 +91,7 @@ class _Controller {
     /* Add a task by pushing 'this' (description = string) into an [] called `Items`. */
     addTask() {
         this.Items.push({
-                completed: false, /* Default set to false. */
+                completed: false, 
                 description: this.description
             });
         this.description = ''; /* Then `description` stays empty. */            
@@ -99,10 +99,6 @@ class _Controller {
     /* Removes all items in the model by re-assigning `Items` = [] (empty array) */
     removeAll() {
         this.Items = [];
-    };
-    /* Marks all `Task`'s inside the `Items` array as completed. */ 
-    markAll(completed: boolean) {
-            this.Items.forEach(todoItem => { todoItem.completed = !todoItem.completed; });
     };
     /* Here we have a function with a static type called 'todoItem' which uses the type 'Task'. */
     /* We simply traverse through the Items [] and splice the array removing the selected 'todoItem'. */
@@ -112,6 +108,20 @@ class _Controller {
         if (index > -1) {
             this.Items.splice(index, 1);
         }
+    };
+    /* A method to delete selected items which are completed = true */
+    /* Removes the `indexOf(todoItem.completed)` from the array `Items`. */
+    removeSelected(completed: boolean, todoItem: Task) {
+        // if((<HTMLInputElement>document.getElementById(“checked”).checked)) {…}
+        const selected = todoItem.completed;
+        const index = this.Items.indexOf(selected);
+        if (selected == true) {
+            this.Items.splice(index, 1);
+        }
+    };
+    /* Marks all `Task`'s inside the `Items` array as completed. */ 
+    markAll(completed: boolean) {
+            this.Items.forEach(todoItem => { todoItem.completed = !todoItem.completed; });
     };
     /* Update is performed, this is for whenever the `add` button is clicked. */
     /* This also makes sure that the item is not completed until chosen so. */
@@ -130,25 +140,6 @@ class _Controller {
         return count; /* Returns the number of count. */
     };
 }
-/*
-
-* VALIDATION *
-
-Here we use a mixture of Angular JS and TypeScript to define a set of validation methods.
-
-Source: http://www.kirjai.com/validation-model-driven-forms-ng2/
-
-*/
-
-import { Component } from '@angular/core';
-
-@Component({
-    selector: 'email-form',
-    templateUrl: 'email-form.component.html'
-})
-
-export class EmailForm { }
-
 
 /*
 

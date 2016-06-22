@@ -19,6 +19,7 @@
             <a class="button success" ng-click="todo.addTask()">Add</a>
             <a class="button secondary" ng-click="todo.markAll()" ng-model="element.completed">Mark All</a>
             <a class="button alert" ng-click="todo.removeAll()">Remove All</a>
+            <a class="button alert" ng-click="todo.removeSelected(todo)" ng-model="element.completed">Remove Selected</a>
             <ul id="list">
                 <!--  We set up some <li> tags to append todos from the Items() -->
                 <li ng-repeat="element in todo.Items">
@@ -26,7 +27,7 @@
                     <label id="update" ng-dblclick="todo.updateTask(element)">{{element.description}}</label>
                     <!-- Event handler is added to the remove button and calls the remove function -->
                     <!-- If checked - the boolean completed is triggered -->
-                    <input class="check" type="checkbox" ng-model="element.completed">
+                    <input id="completed" class="check" type="checkbox" ng-model="element.completed">
                     <a class="remove alert small" ng-click="todo.removeTask(element)">&times;</a>
                 </li>
             </ul>
@@ -37,5 +38,5 @@
     
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-<script src="dist/app.js"></script>
+<script src="dist/main.js"></script>
 </html>

@@ -5,6 +5,9 @@
     "typescript": "^1.8.10",
     "typings": "^0.8.1"
   },
+  "dependencies": {
+    "@angular/core":  "2.0.0-rc.3"
+  },
   "scripts": {
     "build": "tsc",
     "typings": "typings install"

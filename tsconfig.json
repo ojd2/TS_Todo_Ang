@@ -2,12 +2,8 @@
     "compilerOptions": {
         "noImplicitAny": true,
         "noImplicitReturns": true,
-        "moduleResolution": "node",
-	    "sourceMap": true,
-	    "emitDecoratorMetadata": true,
 	    "experimentalDecorators": true,
-	    "removeComments": false,
-	    "noImplicitAny": false
+	    "removeComments": false
     },
     "exclude": [
         "typings/main.d.ts",
