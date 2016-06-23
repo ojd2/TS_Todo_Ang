@@ -21,12 +21,12 @@ Within our `class` we have small functions all mutating our data (our `Task` typ
 var _Controller = (function () {
     //public _check: boolean;
     /* Set up a global constructor to do something with these types in memory. */
+    /* If familliar with C++ or Java, Constructor functions should be easier to interpret. */
     function _Controller() {
         this.description = '';
         this.Items = [];
         //this._check:HTMLInputElement = document.getElementById("checked") as HTMLInputElement;
     }
-    ;
     /* Add a task by pushing 'this' (description = string) into an [] called `Items`. */
     _Controller.prototype.addTask = function () {
         this.Items.push({
@@ -52,11 +52,11 @@ var _Controller = (function () {
     };
     ;
     /* A method to delete selected todoItem items that have !todoItem.completed (true) -> */
-    /* Removes the `todoItem.completed` from the array `Items[]`. */
+    /* We use the `filter()` method to return !todoItem.completed (true). */
     _Controller.prototype.removeSelected = function () {
-        if (document.getElementById("checked").checked) {
-            this.Items = this.Items.filter(function (todoItem) { return !todoItem.completed; });
-        }
+        this.Items = this.Items.filter(function (todoItem) {
+            return !todoItem.completed;
+        });
     };
     ;
     /* Marks all `Task`'s inside the `Items` array as completed. */

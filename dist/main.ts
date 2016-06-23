@@ -86,11 +86,12 @@ class _Controller {
     public Items: Task[];
     //public _check: boolean;
     /* Set up a global constructor to do something with these types in memory. */
+    /* If familliar with C++ or Java, Constructor functions should be easier to interpret. */
     constructor() {
         this.description = '';
         this.Items = [];
         //this._check:HTMLInputElement = document.getElementById("checked") as HTMLInputElement;
-    };
+    }
     /* Add a task by pushing 'this' (description = string) into an [] called `Items`. */
     addTask() {
         this.Items.push({
@@ -113,11 +114,11 @@ class _Controller {
         }
     };
     /* A method to delete selected todoItem items that have !todoItem.completed (true) -> */
-    /* Removes the `todoItem.completed` from the array `Items[]`. */
+    /* We use the `filter()` method to return !todoItem.completed (true). */
     removeSelected() {
-        if((document.getElementById("checked") as HTMLInputElement).checked) {
-            this.Items = this.Items.filter(todoItem=>!todoItem.completed);
-        }
+       this.Items = this.Items.filter(todoItem => {
+         return !todoItem.completed;
+       });
     };
     /* Marks all `Task`'s inside the `Items` array as completed. */ 
     markAll(completed: boolean) {
