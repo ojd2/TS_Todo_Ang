@@ -12,14 +12,14 @@
 
 <body>
     <div id="wrapper">
-        <header><h1>A simple Todo Application</h1></header>
+        <header><h1>Simple Todo Application</h1></header>
         <form id="main" ng-controller="_Controller as todo" ng-submit="todo.addTask()">
             <input id="taskInput" type="text" ng-model="todo.description" placeholder="Enter a Task!">
             <!-- We add an event handler using angular to call the addTodoItem() -->
             <a class="button success" ng-click="todo.addTask()">Add</a>
             <a class="button secondary" ng-click="todo.markAll()" ng-model="element.completed">Mark All</a>
             <a class="button alert" ng-click="todo.removeAll()">Remove All</a>
-            <a class="button alert" ng-click="todo.removeSelected(todo)" ng-model="element.completed">Remove Selected</a>
+            <a class="button" ng-click="todo.removeSelected()">Remove Selected</a>
             <ul id="list">
                 <!--  We set up some <li> tags to append todos from the Items() -->
                 <li ng-repeat="element in todo.Items">

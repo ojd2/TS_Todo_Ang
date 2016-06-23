@@ -19,11 +19,14 @@ Within our `class` we have small functions all mutating our data (our `Task` typ
 
 */
 var _Controller = (function () {
+    //public _check: boolean;
     /* Set up a global constructor to do something with these types in memory. */
     function _Controller() {
         this.description = '';
         this.Items = [];
+        //this._check:HTMLInputElement = document.getElementById("checked") as HTMLInputElement;
     }
+    ;
     /* Add a task by pushing 'this' (description = string) into an [] called `Items`. */
     _Controller.prototype.addTask = function () {
         this.Items.push({
@@ -38,11 +41,6 @@ var _Controller = (function () {
         this.Items = [];
     };
     ;
-    /* Marks all `Task`'s inside the `Items` array as completed. */
-    _Controller.prototype.markAll = function (completed) {
-        this.Items.forEach(function (todoItem) { todoItem.completed = !todoItem.completed; });
-    };
-    ;
     /* Here we have a function with a static type called 'todoItem' which uses the type 'Task'. */
     /* We simply traverse through the Items [] and splice the array removing the selected 'todoItem'. */
     _Controller.prototype.removeTask = function (todoItem) {
@@ -51,6 +49,19 @@ var _Controller = (function () {
         if (index > -1) {
             this.Items.splice(index, 1);
         }
+    };
+    ;
+    /* A method to delete selected todoItem items that have !todoItem.completed (true) -> */
+    /* Removes the `todoItem.completed` from the array `Items[]`. */
+    _Controller.prototype.removeSelected = function () {
+        if (document.getElementById("checked").checked) {
+            this.Items = this.Items.filter(function (todoItem) { return !todoItem.completed; });
+        }
+    };
+    ;
+    /* Marks all `Task`'s inside the `Items` array as completed. */
+    _Controller.prototype.markAll = function (completed) {
+        this.Items.forEach(function (todoItem) { todoItem.completed = !todoItem.completed; }); /* the use of `=>` reads "is mapped to". */
     };
     ;
     /* Update is performed, this is for whenever the `add` button is clicked. */
@@ -74,14 +85,6 @@ var _Controller = (function () {
     ;
     return _Controller;
 }());
-/*
-
-* VALIDATION *
-
-Source: http://www.kirjai.com/validation-model-driven-forms-ng2/
-
-*/
-// import { validateInput } from './input.component';
 /*
 
 * ANGULAR *
@@ -109,3 +112,10 @@ Our state could be something like `addTask` or `removeAll`, where the program st
 */
 var App = angular.module('App', []);
 App.controller('_Controller', _Controller);
+/*
+
+* REFERENCES *
+
+1) https://basarat.gitbooks.io/typescript/content/docs/types/stringLiteralType.html
+
+*/

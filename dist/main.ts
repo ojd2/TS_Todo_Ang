@@ -16,7 +16,7 @@ The Application has been broken down and uses a more verbose MVC pattern as we a
 
 Instead of the more generic MVC pattern that is all under one `class`. 
 
-With this in mind, we can create quite large applications in a more compositional way. b
+With this in mind, we can create quite large applications in a more compositional way.
 
 However, more importantly we do not cross over any global variables.
 
@@ -67,6 +67,7 @@ a) completed and b) added a description or name for the Todo Task.
 interface Task {
     completed: boolean; // Denotes true or false.
     description: string; // Stores a string.
+    // _check: boolean;
 }
 /*
 
@@ -83,16 +84,18 @@ class _Controller {
     /* Set up some of the global / public types we shall be using throughout. */
     public description: string;
     public Items: Task[];
+    //public _check: boolean;
     /* Set up a global constructor to do something with these types in memory. */
     constructor() {
         this.description = '';
         this.Items = [];
-    }
+        //this._check:HTMLInputElement = document.getElementById("checked") as HTMLInputElement;
+    };
     /* Add a task by pushing 'this' (description = string) into an [] called `Items`. */
     addTask() {
         this.Items.push({
                 completed: false, 
-                description: this.description
+                description: this.description,
             });
         this.description = ''; /* Then `description` stays empty. */            
     };
@@ -109,19 +112,16 @@ class _Controller {
             this.Items.splice(index, 1);
         }
     };
-    /* A method to delete selected items which are completed = true */
-    /* Removes the `indexOf(todoItem.completed)` from the array `Items`. */
-    removeSelected(completed: boolean, todoItem: Task) {
-        // if((<HTMLInputElement>document.getElementById(“checked”).checked)) {…}
-        const selected = todoItem.completed;
-        const index = this.Items.indexOf(selected);
-        if (selected == true) {
-            this.Items.splice(index, 1);
+    /* A method to delete selected todoItem items that have !todoItem.completed (true) -> */
+    /* Removes the `todoItem.completed` from the array `Items[]`. */
+    removeSelected() {
+        if((document.getElementById("checked") as HTMLInputElement).checked) {
+            this.Items = this.Items.filter(todoItem=>!todoItem.completed);
         }
     };
     /* Marks all `Task`'s inside the `Items` array as completed. */ 
     markAll(completed: boolean) {
-            this.Items.forEach(todoItem => { todoItem.completed = !todoItem.completed; });
+        this.Items.forEach(todoItem => { todoItem.completed = !todoItem.completed; }); /* the use of `=>` reads "is mapped to". */
     };
     /* Update is performed, this is for whenever the `add` button is clicked. */
     /* This also makes sure that the item is not completed until chosen so. */
@@ -168,3 +168,11 @@ Our state could be something like `addTask` or `removeAll`, where the program st
 */
 var App = angular.module('App', []);
 App.controller('_Controller', _Controller);
+
+/*
+
+* REFERENCES *
+
+1) https://basarat.gitbooks.io/typescript/content/docs/types/stringLiteralType.html
+
+*/
