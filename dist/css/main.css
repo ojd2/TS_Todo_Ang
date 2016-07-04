@@ -1,7 +1,7 @@
 #wrapper {width:75rem; margin:0 auto; padding: 30px 0;display: block;position: relative;}
-#taskInput {display: inline-block;margin:0px 0px 20px 0px;width: 100%;padding:20px;}
+#taskInput {display: inline-block;margin:0px 0px 20px 0px;width: 100%;padding:20px;text-align:center;background-color: #f8f8fe;}
 [type="color"], [type="date"], [type="datetime-local"], [type="datetime"], [type="email"], [type="month"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="time"], [type="url"], [type="week"], textarea {
-	height:4.438rem !important;
+	height:3.438rem !important;
 }
 header {margin:0 auto;padding:20px 0px;}
 header h1 {text-align: center;font-size:22px !important;padding:10px 0;}
